@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frequent Mental Distress</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Frequent Mental Distress During the Past Month</h1>
+        <div class="gauges-container" id="gauges-container">
+        </div>
+    </div>
+
+    <script src="bullet-chart.js"></script>
+    <script>
+        const data = {
+            labels: ['Ulster County', 'New York State*'],
+            current: [13.2, 15.7],
+            goals: [10.7, 10.7], 
+            directions: ['lower', 'lower'] 
+        };
+
+        initializeGaugeCharts(data);
+    </script>
+</body>
+</html> 

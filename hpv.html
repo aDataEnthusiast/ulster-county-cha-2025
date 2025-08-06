@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bullet Charts - Premature Deaths</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h3>⬆️ Increase HPV Vaccination Rate</h3>
+        <div class="consolidated-charts">
+            <div class="charts-container" id="charts-container"></div>
+        </div>
+    </div>
+
+    <script src="bullet-chart.js"></script>
+    <script>
+        const data = {
+            labels: ['Ulster County', 'New York State*'],
+            current: [14.5, 25.7],
+            goals: [28.7, 28.7], 
+            directions: ['higher', 'higher'] 
+        };
+
+        initializeBulletCharts(data);
+    </script>
+</body>
+</html> 
