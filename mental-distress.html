@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Frequent Mental Distress</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <h1>Frequent Mental Distress During the Past Month</h1>
-        <div class="gauges-container" id="gauges-container">
+        <h3>⬇️ Reduce Mental Health Distress Reported During the Past Month</h3>
+        <div class="consolidated-charts">
+            <div class="charts-container" id="charts-container"></div>
         </div>
     </div>
 
@@ -24,7 +24,7 @@
             directions: ['lower', 'lower'] 
         };
 
-        initializeGaugeCharts(data);
+        initializeBulletCharts(data);
     </script>
 </body>
 </html> 
