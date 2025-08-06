@@ -1,6 +1,26 @@
 function initializeBulletCharts(data) {
-    const maxValue = 100;
-    const minValue = 0;
+    // Determine if data is percentages or rates
+    const isPercentage = data.dataType === 'percentage' || data.dataType === 'percent';
+    const isRate = data.dataType === 'rate';
+    
+    // Set scale based on data type
+    let maxValue, minValue, unit;
+    if (isPercentage) {
+        maxValue = 100;
+        minValue = 0;
+        unit = '%';
+    } else if (isRate) {
+        // For rates, calculate max based on data values
+        const allValues = [...data.current, ...data.goals];
+        maxValue = Math.max(...allValues) * 1.2; // Add 20% padding
+        minValue = 0;
+        unit = data.rateUnit || '/100,000';
+    } else {
+        // Default to percentage if not specified
+        maxValue = 100;
+        minValue = 0;
+        unit = '%';
+    }
     
     function createBulletChart(containerId, label, current, goal, direction) {
         const container = document.getElementById(containerId);
@@ -67,7 +87,7 @@ function initializeBulletCharts(data) {
             .attr('y', 35)
             .attr('font-size', '12px')
             .attr('font-weight', 'bold')
-            .text(`${current}%`);
+            .text(`${current}`);
         
         g.append('text')
             .attr('class', 'goal-text')
@@ -76,7 +96,7 @@ function initializeBulletCharts(data) {
             .attr('font-size', '11px')
             .attr('fill', '#666')
             .attr('font-weight', 'bold')
-            .text(`Goal: ${goal}%`);
+            .text(`Goal: ${goal}`);
     }
 
     const chartsContainer = document.getElementById('charts-container');
