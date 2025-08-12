@@ -3,28 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Frequent Mental Distress</title>
+    <title>Mental Distress</title>
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <div class="container">
-        <h3>⬇️ Reduce Mental Health Distress Reported During the Past Month</h3>
+        <div class="title-section">
+            <div class="direction-box" id="direction-box">
+                <div class="direction-text" id="direction-text"></div>
+                <div class="direction-icon" id="direction-icon"></div>
+            </div>
+            <div class="main-title" id="main-title"></div>
+            <div class="goal-box" id="goal-box">
+                <div class="goal-label">TARGET:</div>
+                <div class="goal-value" id="goal-value"></div>
+            </div>
+        </div>
         <div class="consolidated-charts">
             <div class="charts-container" id="charts-container"></div>
         </div>
     </div>
 
     <script src="bullet-chart.js"></script>
+    <script src="title-utils.js"></script>
     <script>
         const data = {
+            dataType: 'percentage',
+            rateUnit: '%',
             labels: ['Ulster County', 'New York State*'],
             current: [13.2, 15.7],
-            goals: [10.7, 10.7], 
-            directions: ['lower', 'lower'] 
+            goal: 10.7,
+            direction: 'lower',
+            title: 'Frequent Mental Distress During the Past Month among Adults, Age-Adjusted'
         };
 
+        initializeTitleSection(data);
         initializeBulletCharts(data);
     </script>
 </body>
-</html> 
+</html>

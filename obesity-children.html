@@ -3,28 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Obesity in Children and Adolescents</title>
+    <title>Obesity in Children</title>
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <div class="container">
-        <h3>⬇️ Reduce Obesity in Children and Adolescents</h3>
+        <div class="title-section">
+            <div class="direction-box" id="direction-box">
+                <div class="direction-text" id="direction-text"></div>
+                <div class="direction-icon" id="direction-icon"></div>
+            </div>
+            <div class="main-title" id="main-title"></div>
+            <div class="goal-box" id="goal-box">
+                <div class="goal-label">TARGET:</div>
+                <div class="goal-value" id="goal-value"></div>
+            </div>
+        </div>
         <div class="consolidated-charts">
             <div class="charts-container" id="charts-container"></div>
         </div>
     </div>
 
     <script src="bullet-chart.js"></script>
+    <script src="title-utils.js"></script>
     <script>
         const data = {
+            dataType: 'percentage',
+            rateUnit: '%',
             labels: ['Ulster County', 'New York State*'],
             current: [24.2, 20.6],
-            goals: [16.4, 16.4], 
-            directions: ['lower', 'lower']
+            goal: 16.4,
+            direction: 'lower',
+            title: 'Percentage of Children and Adolescents with Obesity'
         };
 
+        initializeTitleSection(data);
         initializeBulletCharts(data);
     </script>
 </body>
-</html> 
+</html>
