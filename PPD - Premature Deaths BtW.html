@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Newborn Withdrawal</title>
+    <title>PPD | Premature Deaths, Black to White</title>
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -30,13 +30,15 @@
     <script src="title-utils.js"></script>
     <script>
         const data = {
-            dataType: 'rate',
-            rateUnit: '/1,000',
+            dataType: 'percentage',
+            rateUnit: '%',
             labels: ['Ulster County', 'New York State*'],
-            current: [12.9, 9.6],
-            goal: 9.1,
+            current: [25.3, 21.7],
+            goal: 17.3,
             direction: 'lower',
-            title: 'Newborns with Neonatal Withdrawal Syndrome, Crude Rate Per 1,000 Newborn Discharges'
+            title: 'Premature Deaths',
+            details: 'Black to White Individuals',
+            subtitle: 'Before Age 65, Difference of Percentages'
         };
 
         initializeTitleSection(data);

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Premature Deaths</title>
+    <title>HI | Obesity in Children</title>
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -30,13 +30,14 @@
     <script src="title-utils.js"></script>
     <script>
         const data = {
-            dataType: 'rate',
-            rateUnit: '/100,000',
+            dataType: 'percentage',
+            rateUnit: '%',
             labels: ['Ulster County', 'New York State*'],
-            current: [21.9, 22.0],
-            goal: 22.8,
+            current: [24.2, 20.6],
+            goal: 16.4,
             direction: 'lower',
-            title: 'Premature Deaths, Per 100,000'
+            title: 'Children and Adolescents with Obesity',
+            subtitle: 'Prevalence, Percentage of Population'
         };
 
         initializeTitleSection(data);

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maternal Mortality</title>
+    <title>CD | Hypertension Medication, Adults</title>
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -30,13 +30,14 @@
     <script src="title-utils.js"></script>
     <script>
         const data = {
-            dataType: 'rate',
-            rateUnit: '/100,000',
+            dataType: 'percentage',
+            rateUnit: '%',
             labels: ['Ulster County', 'New York State*'],
-            current: [0.0, 22.6],
-            goal: 16.0,
-            direction: 'lower',
-            title: 'Maternal Mortality Rate, Per 100,000 Live Births'
+            current: [77.0, 81.2],
+            goal: 80.7,
+            direction: 'higher',
+            title: 'Adults with Hypertension Currently Taking Medicine to Manage Their High Blood Pressure',
+            subtitle: 'Prevalence, Percentage of Population'
         };
 
         initializeTitleSection(data);

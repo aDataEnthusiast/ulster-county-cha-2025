@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Suicide Mortality</title>
+    <title>HI | Colorectal Cancer Screening</title>
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -30,13 +30,14 @@
     <script src="title-utils.js"></script>
     <script>
         const data = {
-            dataType: 'rate',
-            rateUnit: '/100,000',
+            dataType: 'percentage',
+            rateUnit: '%',
             labels: ['Ulster County', 'New York State*'],
-            current: [12.0, 5.6],
-            goal: 4.7,
-            direction: 'lower',
-            title: 'Suicide Mortality Among Youth (15-19), Per 100,000'
+            current: [68.8, 66.5],
+            goal: 66.3,
+            direction: 'higher',
+            title: 'Colorectal Cancer Screening',
+            subtitle: 'Adults, Aged 50-64 Years'
         };
 
         initializeTitleSection(data);

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Premature Deaths, Black to White</title>
+    <title>MIH | Maternal Mortality</title>
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -30,13 +30,14 @@
     <script src="title-utils.js"></script>
     <script>
         const data = {
-            dataType: 'percentage',
-            rateUnit: '%',
+            dataType: 'rate',
+            rateUnit: '/100,000',
             labels: ['Ulster County', 'New York State*'],
-            current: [25.3, 21.7],
-            goal: 17.3,
+            current: [0.0, 22.6],
+            goal: 16.0,
             direction: 'lower',
-            title: 'Disparities in Premature Deaths Between Black and White Individuals'
+            title: 'Maternal Mortality',
+            subtitle: 'Rate Per 100,000 Live Births'
         };
 
         initializeTitleSection(data);

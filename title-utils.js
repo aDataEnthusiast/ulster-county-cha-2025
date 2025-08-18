@@ -1,3 +1,7 @@
+function parseItalicText(text) {
+    return text.replace(/\*([^*]+)\*/g, '<i>$1</i>');
+}
+
 function populateTitleSection(data) {
     const directionIcon = document.getElementById('direction-icon');
     const directionText = document.getElementById('direction-text');
@@ -12,7 +16,25 @@ function populateTitleSection(data) {
         directionText.textContent = 'Reduce';
     }
     
-    mainTitle.textContent = data.title;
+    if (data.title && data.details) {
+        if (data.subtitle) {
+            mainTitle.innerHTML = `<span class="title-main">${data.title}</span>
+                                   <span class="title-details">${data.details}</span>
+                                   <span class="subtitle">${data.subtitle}</span>`;
+        } else {
+            mainTitle.innerHTML = `<span class="title-main">${data.title}</span>
+                                   <span class="title-details">${data.details}</span>`;
+        }
+    }
+    else if (data.title) {
+        if (data.subtitle) {
+            mainTitle.innerHTML = `<span class="title-main">${data.title}</span>
+                                   <span class="subtitle">${data.subtitle}</span>`;
+        } else {
+            mainTitle.innerHTML = `<span class="title-main">${data.title}</span>`;
+        }
+    }
+    
     goalValue.textContent = data.goal.toFixed(1) + (data.rateUnit || '');
 }
 

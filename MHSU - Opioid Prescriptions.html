@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Preventable Hospitalizations</title>
+    <title>MHSU | Opioid Prescription Rate</title>
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -30,13 +30,14 @@
     <script src="title-utils.js"></script>
     <script>
         const data = {
-            dataType: 'percentage',
-            rateUnit: '%',
+            dataType: 'rate',
+            rateUnit: '/1,000',
             labels: ['Ulster County', 'New York State*'],
-            current: [95.0, 90.8],
-            goal: 115.0,
+            current: [448.7, 352.7],
+            goal: 350.0,
             direction: 'lower',
-            title: 'Potentially Preventable Hospitalizations Among Adults, Age-Adjusted'
+            title: 'Opioid Analgesic Prescriptions',
+            subtitle: 'Age-Adjusted, Rate Per 1,000'
         };
 
         initializeTitleSection(data);

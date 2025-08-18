@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hypertension Medication, Adults</title>
+    <title>MHSU | Overdose Deaths</title>
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -30,13 +30,14 @@
     <script src="title-utils.js"></script>
     <script>
         const data = {
-            dataType: 'percentage',
-            rateUnit: '%',
+            dataType: 'rate',
+            rateUnit: '/100,000',
             labels: ['Ulster County', 'New York State*'],
-            current: [77.0, 81.2],
-            goal: 80.7,
-            direction: 'higher',
-            title: 'Percent of Adults Taking Medicine to Manage Their High Blood Pressure'
+            current: [35.7, 26.3],
+            goal: 14.3,
+            direction: 'lower',
+            title: 'Overdose Deaths Involving Any Opioids',
+            subtitle: 'Age-Adjusted, Rate Per 100,000'
         };
 
         initializeTitleSection(data);

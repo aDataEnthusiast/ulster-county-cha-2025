@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exclusively Breastfed, All Infants</title>
+    <title>MIH | Infant Mortality</title>
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -30,13 +30,14 @@
     <script src="title-utils.js"></script>
     <script>
         const data = {
-            dataType: 'percentage',
-            rateUnit: '%',
+            dataType: 'rate',
+            rateUnit: '/1,000',
             labels: ['Ulster County', 'New York State*'],
-            current: [61.3, 46.7],
-            goal: 51.7,
-            direction: 'higher',
-            title: 'Percentage of Infants who are Exclusively Breastfed in the Hospital, among All Infants'
+            current: [5.8, 4.7],
+            goal: 4.0,
+            direction: 'lower',
+            title: 'Infant Mortality',
+            subtitle: 'Rate Per 1,000 Live Births'
         };
 
         initializeTitleSection(data);
