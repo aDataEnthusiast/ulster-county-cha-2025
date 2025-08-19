@@ -3,14 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Goal Gauges</title>
+    <title>Ulster County CHA 2025 - Charts</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link rel="stylesheet" href="landing.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <div class="container">
-        <h1>CHA 2025 Goal Gauges</h1>
-        </div>
+        <header class="hero">
+            <h1><i class="fas fa-chart-bar"></i> Prevention Agenda Objectives</h1>
+            <p>Ulster County Community Health Assessment 2025</p>
+        </header>
+
+        <main class="main-content">
+            <div class="columns-container">
+                <!-- Column 1 -->
+                <div class="column">
+                    <h2><i class="fas fa-heartbeat"></i> Chronic Disease</h2>
+                    <a href="https://adataenthusiast.github.io/ulster-county-cha-2025/CD%20-%20Asthma%20ER%20Visits.html">Asthma ER Visits</a>
+                    <a href="https://adataenthusiast.github.io/ulster-county-cha-2025/CD%20-%20Hypertension%20Medication.html">Hypertension Medication</a>
+                </div>
+
+                <!-- Column 2 -->
+                <div class="column">
+                    <h2><i class="fas fa-book-medical"></i> Health Indicators</h2>
+                    <a href="https://adataenthusiast.github.io/ulster-county-cha-2025/HI%20-%20Cigarette%20Use%20Adults.html">Cigarette Use among Adults</a>
+                    <a href="https://adataenthusiast.github.io/ulster-county-cha-2025/HI%20-%20Colorectal%20Screening.html">Colorectal Screening</a>
+                    <a href="https://adataenthusiast.github.io/ulster-county-cha-2025/HI%20-%20Combined%20Seven%20Series.html">Combined Seven Series</a>
+                    <a href="https://adataenthusiast.github.io/ulster-county-cha-2025/HI%20-%20HPV%20Vaccine%20Series.html">HPV Vaccine Series</a>
+                    <a href="https://adataenthusiast.github.io/ulster-county-cha-2025/HI%20-%20Obesity%20Adults.html">Obesity in Adults</a>
+                    <a href="https://adataenthusiast.github.io/ulster-county-cha-2025/HI%20-%20Obesity%20Children.html">Obesity in Children</a>
+                </div>
+
+                <!-- Column 3 -->
+                <div class="column">
+                    <h2><i class="fas fa-brain"></i> Mental Health & Substance Use</h2>
+                    <a href="https://adataenthusiast.github.io/ulster-county-cha-2025/MHSU%20-%20Mental%20Distress.html">Mental Distress</a>
+                    <a href="https://adataenthusiast.github.io/ulster-county-cha-2025/MHSU%20-%20Buprenorphine%20Prescriptions.html">Buprenorphine Prescriptions</a>
+                    <a href="https://adataenthusiast.github.io/ulster-county-cha-2025/MHSU%20-%20Opioid%20Prescriptions.html">Opioid Prescriptions</a>
+                    <a href="https://adataenthusiast.github.io/ulster-county-cha-2025/MHSU%20-%20Overdose%20Deaths.html">Overdose Deaths</a>
+                </div>
+
+                <!-- Column 4 -->
+                <div class="column">
+                    <h2><i class="fas fa-baby"></i> Maternal & Infant Health</h2>
+                    <a href="https://adataenthusiast.github.io/ulster-county-cha-2025/MIH%20-%20Breastfed%20All%20Infants.html">Exclusively Breastfed in Hospital, All Infants</a>
+                    <a href="https://adataenthusiast.github.io/ulster-county-cha-2025/MIH%20-%20Breastfed%20Black%20Infants.html">Exclusively Breastfed in Hospital, Black Infants</a>
+                    <a href="https://adataenthusiast.github.io/ulster-county-cha-2025/MIH%20-%20Breastfed%20Hispanic%20Infants.html">Exclusively Breastfed in Hospital, Hispanic Infants</a>
+                    <a href="https://adataenthusiast.github.io/ulster-county-cha-2025/MIH%20-%20Infant%20Mortality.html">Infant Mortality</a>
+                    <a href="https://adataenthusiast.github.io/ulster-county-cha-2025/MIH%20-%20Maternal%20Mortality.html">Maternal Mortality</a>
+                    <a href="https://adataenthusiast.github.io/ulster-county-cha-2025/MIH%20-%20Newborn%20Withdrawal.html">Newborn Withdrawal</a>
+                </div>
+
+                <!-- Column 5 -->
+                <div class="column">
+                    <h2><i class="fas fa-shield-alt"></i> Preventable and Premature Deaths</h2>
+                    <a href="https://adataenthusiast.github.io/ulster-county-cha-2025/PPD%20-%20Premature%20Deaths.html">Premature Deaths</a>
+                    <a href="https://adataenthusiast.github.io/ulster-county-cha-2025/PPD%20-%20Premature%20Deaths%20BtW.html">Premature Deaths, Difference of Black and White Individuals</a>
+                    <a href="https://adataenthusiast.github.io/ulster-county-cha-2025/PPD%20-%20Premature%20Deaths%20HtW.html">Premature Deaths, Difference of Hispanic and White Individuals</a>
+                    <a href="https://adataenthusiast.github.io/ulster-county-cha-2025/PPD%20-%20Preventable%20Hospitalizations.html">Preventable Hospitalizations</a>
+                    <a href="https://adataenthusiast.github.io/ulster-county-cha-2025/PPD%20-%20Preventable%20Hospitalizations%20BtW.html">Preventable Hospitalizations, Difference of Black and White Individuals</a>
+                    <a href="https://adataenthusiast.github.io/ulster-county-cha-2025/PPD%20-%20Preventable%20Hospitalizations%20HtW.html">Preventable Hospitalizations, Difference of Hispanic and White Individuals</a>
+                </div>
+
+                <!-- Column 6 -->
+                <div class="column">
+                    <h2><i class="fas fa-exclamation-triangle"></i> Injury</h2>
+                    <a href="https://adataenthusiast.github.io/ulster-county-cha-2025/INJ%20-%20Suicide.html">Suicide</a>
+                </div>
+            </div>
+
+            <div class="alt-charts">
+                <div class="column" style="max-width: 25%;">
+                    <h2><i class="fas fa-chart-line"></i> Sexually Transmitted Infections (STIs)</h2>
+                    <a href="https://adataenthusiast.github.io/ulster-county-cha-2025/lines/chlamydia.html">Chlamydia</a>
+                    <a href="https://adataenthusiast.github.io/ulster-county-cha-2025/lines/gonorrhea.html">Gonorrhea</a>
+                    <a href="https://adataenthusiast.github.io/ulster-county-cha-2025/lines/syphilis.html">Syphilis</a>
+                </div>
+            </div>
+        </main>
     </div>
+    <footer class="decorative-footer"></footer>
 </body>
 </html>
-
-
