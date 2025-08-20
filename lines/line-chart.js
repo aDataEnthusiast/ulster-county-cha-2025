@@ -8,8 +8,8 @@ function initializeLineChart(data) {
         }
         
         const margin = { top: 40, right: 60, bottom: 100, left: 60 };
-        const width = 1000 - margin.left - margin.right;
-        const height = 400 - margin.top - margin.bottom;
+        const width = 600 - margin.left - margin.right;
+        const height = 350 - margin.top - margin.bottom;
         
         const svg = d3.select(container)
             .append('svg')
