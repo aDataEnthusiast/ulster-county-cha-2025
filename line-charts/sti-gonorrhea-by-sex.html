@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>STI | Gonorrhea by Sex</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link rel="stylesheet" href="../styles/line-charts.css">
+  </head>
+  <body>
+
+    <div class="container">
+      <div id="chart-container"></div>
+    </div>
+
+    <script src="../scripts/line-chart.js"></script>
+    <script>
+        const data = {
+            scope: 'sex',
+            title: 'Gonorrhea Rates by Sex',
+            subtitle: 'Rate Per 100,000 Individuals',
+            Total: [83.0, 78.6, 71.4, 72.5, 51.4],
+            Male: [81.0, 5.5, 71.4, 91.5, 75.7],
+            Female: [85.0, 74.6, 71.3, 53.6, 27.2]
+        }
+
+        initializeLineChart(data);
+    </script>
+  </body>
+</html>
