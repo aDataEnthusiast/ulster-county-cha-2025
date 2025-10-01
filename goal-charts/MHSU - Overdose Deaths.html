@@ -10,11 +10,6 @@
 </head>
 <body>
     <div class="container">
-        <div class="heading-section">
-            <div class="heading-title">
-                <p><i class="fa-solid fa-clipboard-check"></i>Prevention Agenda Objective</p>
-            </div>
-        </div>
         <div class="title-section">
             <div class="direction-box" id="direction-box">
                 <div class="direction-text" id="direction-text"></div>
@@ -29,6 +24,12 @@
         <div class="consolidated-charts">
             <div class="charts-container" id="charts-container"></div>
         </div>
+        <div class="source-section">
+            <div class="data-source-text">Data Source: Vital Statistics (2025)</div>
+            <div class="target-source-text">
+                Healthy People 2030 Objectives, <a href="https://odphp.health.gov/healthypeople/objectives-and-data/browse-objectives/injury-prevention/reduce-overdose-deaths-involving-opioids-ivp-20" target="_blank">IVP-20</a>
+            </div>
+        </div>
     </div>
 
     <script src="../scripts/goal-chart.js"></script>
@@ -39,7 +40,7 @@
             rateUnit: '/100,000',
             labels: ['Ulster County', 'New York State*'],
             current: [35.7, 26.3],
-            goal: 14.3,
+            goal: 13.1,
             direction: 'lower',
             title: 'Overdose Deaths Involving Any Opioids',
             subtitle: 'Age-Adjusted, Rate Per 100,000'

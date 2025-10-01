@@ -3,7 +3,7 @@
 body {
     font-family: 'Outfit', sans-serif;
     margin: 20px;
-    background-color: #e6eff0;
+    background-color: #f7f7f7;
 }
 
 .heading-section {
@@ -141,7 +141,7 @@ h1, h2, h3 {
     border-radius: 8px;
     padding-right: 20px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    margin: 20px 0;
+    margin: 20px 0px 10px 0px;
 }
 
 .chart-row {
@@ -197,6 +197,18 @@ h1, h2, h3 {
     background-color: #ffebee;
     color: #c62828;
     border: 1px solid #ffcdd2;
+}
+
+.source-section {
+    font-size: 12px;
+    margin-bottom: 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.source-section .target-source-text {
+    text-align: right;
 }
 
 @media (max-width: 600px) {

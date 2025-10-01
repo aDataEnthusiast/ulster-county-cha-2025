@@ -10,11 +10,6 @@
 </head>
 <body>
     <div class="container">
-        <div class="heading-section">
-            <div class="heading-title">
-                <p><i class="fa-solid fa-clipboard-check"></i>Prevention Agenda Objective</p>
-            </div>
-        </div>
         <div class="title-section">
             <div class="direction-box" id="direction-box">
                 <div class="direction-text" id="direction-text"></div>
@@ -29,6 +24,12 @@
         <div class="consolidated-charts">
             <div class="charts-container" id="charts-container"></div>
         </div>
+        <div class="source-section">
+            <div class="data-source-text">Data Source: NYS BRFSS (2022)</div>
+            <div class="target-source-text">
+                NYS Prevention Agenda 2025-2030, <a href="https://www.health.ny.gov/prevention/prevention_agenda/2025-2030/docs/prevention_agenda_plan.pdf" target="_blank">#5.0</a>
+            </div>
+        </div>
     </div>
 
     <script src="../scripts/goal-chart.js"></script>
@@ -38,8 +39,8 @@
             dataType: 'percentage',
             rateUnit: '%',
             labels: ['Ulster County', 'New York State*'],
-            current: [13.2, 15.7],
-            goal: 10.7,
+            current: [15.7, 13.2],
+            goal: 12.0,
             direction: 'lower',
             title: 'Mental Distress During the Past Month',
             subtitle: 'Adults, Age-Adjusted, Percentage of Population'

@@ -3,18 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PPD | Preventable Hospitalizations</title>
+    <title>CD | Asthma ER Visits, 0-4</title>
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <link rel="stylesheet" href="../styles/goal-charts.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <div class="container">
-        <div class="heading-section">
-            <div class="heading-title">
-                <p><i class="fa-solid fa-clipboard-check"></i>Prevention Agenda Objective</p>
-            </div>
-        </div>
         <div class="title-section">
             <div class="direction-box" id="direction-box">
                 <div class="direction-text" id="direction-text"></div>
@@ -29,6 +24,12 @@
         <div class="consolidated-charts">
             <div class="charts-container" id="charts-container"></div>
         </div>
+        <div class="source-section">
+            <div class="data-source-text">Data Source: SPARCS (2025)</div>
+            <div class="target-source-text">
+                Healthy People 2030 Objectives, <a href="https://odphp.health.gov/healthypeople/objectives-and-data/browse-objectives/respiratory-disease/reduce-emergency-department-visits-children-under-5-years-asthma-rd-02" target="_blank">RD-02</a>
+            </div>
+        </div>
     </div>
 
     <script src="../scripts/goal-chart.js"></script>
@@ -37,12 +38,12 @@
         const data = {
             dataType: 'rate',
             rateUnit: '/10,000',
-            labels: ['Ulster County', 'New York State*'],
-            current: [95.0, 90.8],
-            goal: 115.0,
+            labels: ['Ulster County'],
+            current: [83.3],
+            goal: 64.3,
             direction: 'lower',
-            title: 'Potentially Preventable Hospitalizations',
-            subtitle: 'Adults, Age-Adjusted, Rate Per 10,000'
+            title: 'Asthma-Related Emergency Room Visits',
+            subtitle: 'Rate Per 10,000, Aged 0-4 Years'
         };
 
         initializeTitleSection(data);

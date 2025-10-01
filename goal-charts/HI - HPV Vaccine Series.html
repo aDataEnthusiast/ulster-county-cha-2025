@@ -10,11 +10,6 @@
 </head>
 <body>
     <div class="container">
-        <div class="heading-section">
-            <div class="heading-title">
-                <p><i class="fa-solid fa-clipboard-check"></i>Prevention Agenda Objective</p>
-            </div>
-        </div>
         <div class="title-section">
             <div class="direction-box" id="direction-box">
                 <div class="direction-text" id="direction-text"></div>
@@ -28,6 +23,12 @@
         </div>
         <div class="consolidated-charts">
             <div class="charts-container" id="charts-container"></div>
+        </div>
+        <div class="source-section">
+            <div class="data-source-text">Data Source: NYSIIS/CIR (2025)</div>
+            <div class="target-source-text">
+                NYS Prevention Agenda 2025-2030, <a href="https://www.health.ny.gov/prevention/prevention_agenda/2025-2030/docs/prevention_agenda_plan.pdf" target="_blank">#37.0</a>
+            </div>
         </div>
     </div>
 
@@ -43,7 +44,7 @@
             direction: 'higher',
             title: 'Complete HPV Vaccine Series',
             details: '',
-            subtitle: 'Adolescents, Ages 13-18 Years, Percentage of Population'
+            subtitle: '13-Year Old Adolescents, Percentage of Population'
         };
 
         initializeTitleSection(data);

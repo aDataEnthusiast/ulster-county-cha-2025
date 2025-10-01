@@ -10,11 +10,6 @@
 </head>
 <body>
     <div class="container">
-        <div class="heading-section">
-            <div class="heading-title">
-                <p><i class="fa-solid fa-clipboard-check"></i>Prevention Agenda Objective</p>
-            </div>
-        </div>
         <div class="title-section">
             <div class="direction-box" id="direction-box">
                 <div class="direction-text" id="direction-text"></div>
@@ -29,6 +24,12 @@
         <div class="consolidated-charts">
             <div class="charts-container" id="charts-container"></div>
         </div>
+        <div class="source-section">
+            <div class="data-source-text">Data Source: Vital Statistics (2024) </div>
+            <div class="target-source-text">
+                Healthy People 2030 Objectives, <a href="https://odphp.health.gov/healthypeople/objectives-and-data/browse-objectives/infants/increase-proportion-infants-who-are-breastfed-exclusively-through-age-6-months-mich-15" target="_blank">MICH-15</a>
+            </div>
+        </div>
     </div>
 
     <script src="../scripts/goal-chart.js"></script>
@@ -39,7 +40,7 @@
             rateUnit: '%',
             labels: ['Ulster County', 'New York State*'],
             current: [61.3, 46.7],
-            goal: 51.7,
+            goal: 42.4,
             direction: 'higher',
             title: 'Infants Exclusively Breastfed in Hospital',
             subtitle: 'Percentage of All Infants'

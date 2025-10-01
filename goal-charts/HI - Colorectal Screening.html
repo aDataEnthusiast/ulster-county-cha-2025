@@ -10,11 +10,6 @@
 </head>
 <body>
     <div class="container">
-        <div class="heading-section">
-            <div class="heading-title">
-                <p><i class="fa-solid fa-clipboard-check"></i>Prevention Agenda Objective</p>
-            </div>
-        </div>
         <div class="title-section">
             <div class="direction-box" id="direction-box">
                 <div class="direction-text" id="direction-text"></div>
@@ -29,6 +24,12 @@
         <div class="consolidated-charts">
             <div class="charts-container" id="charts-container"></div>
         </div>
+        <div class="source-section">
+            <div class="data-source-text">Data Source: NYS BRFSS (2020)</div>
+            <div class="target-source-text">
+                Healthy People 2030 Objectives, <a href="https://odphp.health.gov/healthypeople/objectives-and-data/browse-objectives/cancer/increase-proportion-adults-who-get-screened-colorectal-cancer-c-07" target="_blank">C-07</a>
+            </div>
+        </div>
     </div>
 
     <script src="../scripts/goal-chart.js"></script>
@@ -39,7 +40,7 @@
             rateUnit: '%',
             labels: ['Ulster County', 'New York State*'],
             current: [68.8, 66.5],
-            goal: 66.3,
+            goal: 72.8,
             direction: 'higher',
             title: 'Colorectal Cancer Screening',
             subtitle: 'Adults, Aged 50-64 Years'
