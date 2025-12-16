@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Goal Chart Generator</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <link rel="stylesheet" href="styles/goal-charts.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Outfit', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .generator-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 400px 1fr;
+            gap: 20px;
+        }
+        
+        .form-panel {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            height: fit-content;
+            position: sticky;
+            top: 20px;
+        }
+        
+        .form-panel h2 {
+            margin-top: 0;
+            color: #333;
+            border-bottom: 2px solid #003e52;
+            padding-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .clear-form-btn {
+            background-color: #eb5712;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .clear-form-btn:hover {
+            background-color: #eb6629;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #555;
+            font-size: 14px;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 60px;
+        }
+        
+        .form-group small {
+            display: block;
+            margin-top: 4px;
+            color: #666;
+            font-size: 12px;
+        }
+        
+        .data-rows {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .data-row {
+            display: grid;
+            grid-template-columns: 1fr 100px;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .data-row:last-child {
+            margin-bottom: 0;
+        }
+        
+        .btn {
+            background-color: #003e52;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+        }
+        
+        .btn:hover {
+            background-color: #005a7a;
+        }
+        
+        .btn:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        
+        .preview-panel {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .preview-panel h2 {
+            margin-top: 0;
+            color: #333;
+        }
+        
+        #chart-preview {
+            background: #f7f7f7;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .add-row-btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            cursor: pointer;
+            margin-top: 5px;
+        }
+        
+        .remove-row-btn {
+            background-color: #f44336;
+            color: white;
+            border: none;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            cursor: pointer;
+            margin-top: 5px;
+        }
+        
+        @media (max-width: 968px) {
+            .generator-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-panel {
+                position: static;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="generator-container">
+        <div class="form-panel">
+            <h2>
+                <span><i class="fas fa-cog"></i> Chart Configuration</span>
+            </h2>
+            <form id="chart-form">
+                <div class="" style="display: flex; justify-content: flex-end;">
+                    <button type="button" class="clear-form-btn" onclick="clearForm()">
+                        Clear Form
+                    </button>
+                </div>    
+                <div class="form-group">
+                    <label for="title">Main Title *</label>
+                    <input type="text" id="title" required placeholder="e.g., Completed Combined-7 Vaccine Series">
+                </div>
+                
+                <div class="form-group">
+                    <label for="details">Details (Optional)</label>
+                    <input type="text" id="details" placeholder="Additional title line">
+                </div>
+                
+                <div class="form-group">
+                    <label for="subtitle">Subtitle (Optional)</label>
+                    <input type="text" id="subtitle" placeholder="e.g., Children, Ages 24-35 Months">
+                </div>
+                
+                <div class="form-group">
+                    <label for="dataType">Data Type *</label>
+                    <select id="dataType" required>
+                        <option value="percentage">Percentage (%)</option>
+                        <option value="rate">Rate</option>
+                    </select>
+                </div>
+                
+                <div class="form-group" id="rateUnitGroup" style="display: none;">
+                    <label for="rateUnit">Rate Unit</label>
+                    <input type="text" id="rateUnit" placeholder="/100,000" value="/100,000">
+                    <small>Leave blank for percentage</small>
+                </div>
+                
+                <div class="form-group">
+                    <label for="goal">Target/Goal Value *</label>
+                    <input type="number" id="goal" step="0.1" required placeholder="62.3">
+                </div>
+                
+                <div class="form-group">
+                    <label for="direction">Direction *</label>
+                    <select id="direction" required>
+                        <option value="higher">Higher is Better (Increase)</option>
+                        <option value="lower">Lower is Better (Reduce)</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Data Rows *</label>
+                    <div id="data-rows-container">
+                        <div class="data-rows">
+                            <div class="data-row">
+                                <input type="text" class="label-input" placeholder="Label (e.g., Ulster County)" required>
+                                <input type="number" class="value-input" step="0.1" placeholder="Value" required>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" class="add-row-btn" onclick="addDataRow()">
+                        <i class="fas fa-plus"></i> Add Row
+                    </button>
+                </div>
+                
+                <div class="form-group">
+                    <label for="dataSource">Data Source</label>
+                    <input type="text" id="dataSource" placeholder="NYSIIS/CIR (2025)">
+                </div>
+                
+                <div class="form-group">
+                    <label for="targetSource">Target Source</label>
+                    <input type="text" id="targetSource" placeholder="NYS Prevention Agenda 2025-2030, #36.0">
+                </div>
+                
+                <button type="submit" class="btn">
+                    <i class="fas fa-download"></i> Generate & Download Image
+                </button>
+            </form>
+        </div>
+        
+        <div class="preview-panel">
+            <h2><i class="fas fa-eye"></i> Preview</h2>
+            <div id="chart-preview">
+                <p style="text-align: center; color: #999; padding: 50px;">
+                    Fill out the form to see a preview of your chart
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts/goal-chart.js"></script>
+    <script src="scripts/title-utils.js"></script>
+    <script>
+        let dataRowCount = 1;
+        
+        // Show/hide rate unit field based on data type
+        document.getElementById('dataType').addEventListener('change', function() {
+            const rateUnitGroup = document.getElementById('rateUnitGroup');
+            if (this.value === 'rate') {
+                rateUnitGroup.style.display = 'block';
+            } else {
+                rateUnitGroup.style.display = 'none';
+            }
+        });
+        
+        function clearForm() {
+            // Clear all text inputs
+            document.getElementById('title').value = '';
+            document.getElementById('details').value = '';
+            document.getElementById('subtitle').value = '';
+            document.getElementById('goal').value = '';
+            document.getElementById('dataSource').value = '';
+            document.getElementById('targetSource').value = '';
+            
+            // Reset dropdowns to defaults
+            document.getElementById('dataType').value = 'percentage';
+            document.getElementById('direction').value = 'higher';
+            document.getElementById('rateUnit').value = '/100,000';
+            
+            // Hide rate unit field since percentage is default
+            document.getElementById('rateUnitGroup').style.display = 'none';
+            
+            // Reset data rows to single empty row
+            const container = document.getElementById('data-rows-container');
+            container.innerHTML = `
+                <div class="data-rows">
+                    <div class="data-row">
+                        <input type="text" class="label-input" placeholder="Label (e.g., Ulster County)" required>
+                        <input type="number" class="value-input" step="0.1" placeholder="Value" required>
+                    </div>
+                </div>
+            `;
+            dataRowCount = 1;
+            
+            // Clear preview
+            document.getElementById('chart-preview').innerHTML = `
+                <p style="text-align: center; color: #999; padding: 50px;">
+                    Fill out the form to see a preview of your chart
+                </p>
+            `;
+        }
+        
+        function addDataRow() {
+            const container = document.getElementById('data-rows-container');
+            const dataRows = container.querySelector('.data-rows');
+            const newRow = document.createElement('div');
+            newRow.className = 'data-row';
+            newRow.innerHTML = `
+                <input type="text" class="label-input" placeholder="Label" required>
+                <input type="number" class="value-input" step="0.1" placeholder="Value" required>
+            `;
+            dataRows.appendChild(newRow);
+            dataRowCount++;
+        }
+        
+        function removeDataRow(button) {
+            const row = button.closest('.data-row');
+            if (document.querySelectorAll('.data-row').length > 1) {
+                row.remove();
+            } else {
+                alert('You must have at least one data row.');
+            }
+        }
+        
+        function generateChartData() {
+            const labels = [];
+            const current = [];
+            
+            document.querySelectorAll('.data-row').forEach(row => {
+                const labelInput = row.querySelector('.label-input');
+                const valueInput = row.querySelector('.value-input');
+                if (labelInput.value && valueInput.value) {
+                    labels.push(labelInput.value);
+                    current.push(parseFloat(valueInput.value));
+                }
+            });
+            
+            const dataType = document.getElementById('dataType').value;
+            // For percentages, always use '%', for rates use the user's input
+            const rateUnit = dataType === 'percentage' ? '%' : (document.getElementById('rateUnit').value || undefined);
+            
+            return {
+                dataType: dataType,
+                rateUnit: rateUnit,
+                labels: labels,
+                current: current,
+                goal: parseFloat(document.getElementById('goal').value),
+                direction: document.getElementById('direction').value,
+                title: document.getElementById('title').value,
+                details: document.getElementById('details').value || '',
+                subtitle: document.getElementById('subtitle').value || '',
+                dataSource: document.getElementById('dataSource').value || '',
+                targetSource: document.getElementById('targetSource').value || ''
+            };
+        }
+        
+        function renderPreview() {
+            const data = generateChartData();
+            
+            // Validate required fields
+            if (!data.title || !data.goal || data.labels.length === 0 || data.current.length === 0) {
+                return;
+            }
+            
+            const preview = document.getElementById('chart-preview');
+            
+            // Clear previous preview
+            preview.innerHTML = `
+                <div class="container">
+                    <div class="title-section">
+                        <div class="direction-box" id="direction-box">
+                            <div class="direction-text" id="direction-text"></div>
+                            <div class="direction-icon" id="direction-icon"></div>
+                        </div>
+                        <div class="main-title" id="main-title"></div>
+                        <div class="goal-box" id="goal-box">
+                            <div class="goal-label">TARGET:</div>
+                            <div class="goal-value" id="goal-value"></div>
+                        </div>
+                    </div>
+                    <div class="consolidated-charts">
+                        <div class="charts-container" id="charts-container"></div>
+                    </div>
+                    <div class="source-section">
+                        <div class="data-source-text">${data.dataSource ? 'Data Source: ' + data.dataSource : ''}</div>
+                        <div class="target-source-text">${data.targetSource || ''}</div>
+                    </div>
+                </div>
+            `;
+            
+            // Initialize the chart after DOM is ready
+            setTimeout(() => {
+                populateTitleSection(data);
+                initializeBulletCharts(data);
+            }, 50);
+        }
+        
+        // Debounce function for preview updates
+        let previewTimeout;
+        function debouncePreview() {
+            clearTimeout(previewTimeout);
+            previewTimeout = setTimeout(() => {
+                try {
+                    renderPreview();
+                } catch (e) {
+                    // Silently fail if form is incomplete
+                }
+            }, 300);
+        }
+        
+        // Update preview on form changes
+        document.getElementById('chart-form').addEventListener('input', debouncePreview);
+        
+        // Handle form submission
+        document.getElementById('chart-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const data = generateChartData();
+            const preview = document.getElementById('chart-preview');
+            const container = preview.querySelector('.container');
+            
+            if (!container) {
+                alert('Please fill out all required fields and wait for the preview to render.');
+                return;
+            }
+            
+            const btn = e.target.querySelector('button[type="submit"]');
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Generating...';
+            
+            try {
+                // Ensure chart is fully rendered
+                renderPreview();
+                await new Promise(resolve => setTimeout(resolve, 1000));
+                
+                // Re-select container in case it was recreated
+                const containerToCapture = preview.querySelector('.container');
+                if (!containerToCapture) {
+                    throw new Error('Chart container not found');
+                }
+                
+                // Generate image using html2canvas
+                const canvas = await html2canvas(containerToCapture, {
+                    backgroundColor: '#f7f7f7',
+                    scale: 2, // Higher quality
+                    logging: false,
+                    useCORS: true,
+                    allowTaint: true
+                });
+                
+                // Convert to blob and download
+                canvas.toBlob(function(blob) {
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = `${data.title.replace(/[^a-z0-9]/gi, '_').toLowerCase()}_chart.png`;
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                    URL.revokeObjectURL(url);
+                    
+                    btn.disabled = false;
+                    btn.innerHTML = '<i class="fas fa-download"></i> Generate & Download Image';
+                }, 'image/png');
+                
+            } catch (error) {
+                console.error('Error generating image:', error);
+                alert('Error generating image. Please check the console for details.');
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fas fa-download"></i> Generate & Download Image';
+            }
+        });
+        
+        // Initial render attempt
+        setTimeout(() => {
+            try {
+                renderPreview();
+            } catch (e) {
+                // Form not filled yet, that's okay
+            }
+        }, 100);
+    </script>
+</body>
+</html>
